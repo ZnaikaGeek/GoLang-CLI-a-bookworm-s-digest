@@ -98,4 +98,16 @@ on more than one bookworm's shelf
     return sortBooks(commonBooks)
 }
 
+/* sortBooks sorts the books by Author
+and then Title 
+*/
+func sortBooks(books []Book) []Book {
+    sort.Slice(books, func(i, j int) bool {
+    if books[i].Author != books[j].Author {
+        return books[i].Author < books[j].Author
+    }
+    return books[i].Title < books[j].Title
+    })
+    return books
+}
 
