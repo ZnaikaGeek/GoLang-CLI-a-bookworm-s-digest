@@ -1,3 +1,17 @@
+// bookworm.go
+/* Key Concepts used:
+os.Open: This opens the file in 
+read-only mode.
+defer: This keyword ensures that 
+f.Close() is called automatically 
+when the function exits, 
+which prevents system resource leaks.
+json.NewDecoder: This is efficient 
+for reading from a file stream 
+(an io.Reader) rather than loading 
+the entire file into memory first.
+*/
+
 package main
 
 import (
