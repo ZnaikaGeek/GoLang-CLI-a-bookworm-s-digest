@@ -17,6 +17,7 @@ package main
 import (
     "encoding/json"
     "os"
+    "sort"
 )
 
 /*Bookworm contains the list of books 
@@ -81,4 +82,20 @@ count[book] returns the zero value (0)
   return count
 }
 
-    
+func findCommonBooks(bookworms []Bookworm) []Book {
+/* function returns books that are 
+on more than one bookworm's shelf
+*/
+    booksOnShelves := booksCount(bookworms)
+
+    var commonBooks []Book
+
+    for book, count := range booksOnShelves {
+        if count > 1 {
+            commonBooks = append(commonBooks, book)
+        }
+    }
+    return sortBooks(commonBooks)
+}
+
+
