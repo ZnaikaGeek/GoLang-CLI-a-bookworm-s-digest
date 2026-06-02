@@ -19,8 +19,11 @@ to the sample data
 
         os.Exit(1)
     }
+    commonBooks := findCommonBooks(bookworms)
+    
 /* Print the raw data to verify it was
 loaded correctly
 */
-    fmt.Println(bookworms)
+    fmt.Println("Here are the books in common:")
+    displayBooks(commonBooks)
 }
