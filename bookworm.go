@@ -112,3 +112,11 @@ func sortBooks(books []Book) []Book {
     return books
 }
 
+/* function to print out the titles 
+and the authors of a list of books
+*/
+func displayBooks(books []Book) {
+    for _, book := range books {
+        fmt.Println("-", book.Title, "by", book.Author)
+    }
+}
