@@ -1,5 +1,11 @@
 package main
 
+import (
+    "encoding/json"
+    "fmt"
+    "os"
+)
+
 // Bookworm contains the list of books on a bookworm's shelf.
 type Bookworm struct {
     Name  string `json:"name"`
