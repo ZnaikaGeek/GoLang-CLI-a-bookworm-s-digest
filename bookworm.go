@@ -47,5 +47,6 @@ func loadBookworms(filePath string) ([]Bookworm, error) {
     if err != nil {
         return nil, err
     }
-
+    return bookworms, nil
+}
     
