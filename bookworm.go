@@ -39,3 +39,13 @@ func loadBookworms(filePath string) ([]Bookworm, error) {
     /* 3. Initialize the slice where the 
     file will be decoded
     */
+    var bookworms []Bookworm
+
+    /* 4. Create JSON decoder and decode
+    the file content into the slice */
+    err = json.NewDecoder(f).Decode(&bookworms)
+    if err != nil {
+        return nil, err
+    }
+
+    
