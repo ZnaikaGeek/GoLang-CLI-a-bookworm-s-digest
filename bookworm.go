@@ -42,7 +42,8 @@ Defining a custom type to implement
 sort.Interface. */
 type byAuthor []Book
 
-// Custom error types for better error classification
+/* Custom error types for better error
+classification */
 type BookwormError struct {
     Op   string // Operation that failed
     Path string // File path involved
