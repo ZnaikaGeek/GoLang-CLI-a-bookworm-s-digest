@@ -19,6 +19,7 @@ import (
     "fmt"
     "os"
     "sort"
+    "errors"
 )
 
 /*Bookworm contains the list of books 
@@ -39,6 +40,24 @@ type Book struct {
 Defining a custom type to implement
 sort.Interface. */
 type byAuthor []Book
+
+// Custom error types for better error classification
+type BookwormError struct {
+    Op   string // Operation that failed
+    Path string // File path involved
+    Err  error  // Underlying error
+}
+
+func (e *BookwormError) Error() string {
+    if e.Path != "" {
+        return fmt.Sprintf("%s: %s: %v", e.Op, e.Path, e.Err)
+    }
+    return fmt.Sprintf("%s: %v", e.Op, e.Err)
+}
+
+func (e *BookwormError) Unwrap() error {
+    return e.Err
+}
 
 /* Len implements sort.Interface 
 by returning the length of the 
