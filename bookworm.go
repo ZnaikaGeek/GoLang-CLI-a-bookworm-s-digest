@@ -35,6 +35,10 @@ type Book struct {
     Title  string `json:"title"`
 }
 
+// byAuthor is a list of Book.
+// Defining a custom type to implement sort.Interface.
+type byAuthor []Book
+
 /*load bookWorms reads the file 
 and returns the list of bookworms,
 and their beloved books, found therein.
