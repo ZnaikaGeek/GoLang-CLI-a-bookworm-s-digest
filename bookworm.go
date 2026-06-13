@@ -69,27 +69,20 @@ and returns the list of bookworms,
 and their beloved books, found therein.
 */
 
+// Clear error context
 func loadBookworms(filePath string) ([]Bookworm, error) {
-    // 1. Open the file for reading
     f, err := os.Open(filePath)
     if err != nil {
-        return nil, err
+        return nil, fmt.Errorf("failed to open bookworms file %q: %w", filePath, err)
     }
-
-    /* 2. Ensure the file is closed when
-    when the function finishes */
     defer f.Close()
 
-    /* 3. Initialize the slice where the 
-    file will be decoded
-    */
     var bookworms []Bookworm
-
-    /* 4. Create JSON decoder and decode
-    the file content into the slice */
+    
     err = json.NewDecoder(f).Decode(&bookworms)
+    
     if err != nil {
-        return nil, err
+        return nil, fmt.Errorf("failed to decode bookworms JSON from %q: %w", filePath, err)
     }
     return bookworms, nil
 }
