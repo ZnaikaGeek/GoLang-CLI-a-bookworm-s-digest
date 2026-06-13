@@ -35,9 +35,9 @@ type Book struct {
     Title  string `json:"title"`
 }
 
-// byAuthor is a list of Book.
-// Defining a custom type to implement
-//sort.Interface.
+/* byAuthor is a list of Book.
+Defining a custom type to implement
+sort.Interface. */
 type byAuthor []Book
 
 /* Len implements sort.Interface 
@@ -47,6 +47,11 @@ func (b byAuthor) Len() int {
     return len(b) 
 }
 
+/* Swap implements sort.Interface and 
+swaps two books in place. */
+func (b byAuthor) Swap(i, j int) {
+    b[i], b[j] = b[j], b[i]
+}
 /*load bookWorms reads the file 
 and returns the list of bookworms,
 and their beloved books, found therein.
