@@ -52,6 +52,18 @@ swaps two books in place. */
 func (b byAuthor) Swap(i, j int) {
     b[i], b[j] = b[j], b[i]
 }
+
+/* Less implements sort.Interface and 
+defines the sorting criteria.
+We sort by Author first, and then by 
+Title if the authors are the same. */
+func (b byAuthor) Less(i, j int) bool {
+    if b[i].Author != b[j].Author {
+        return b[i].Author < b[j].Author
+    }
+    return b[i].Title < b[j].Title
+}
+
 /*load bookWorms reads the file 
 and returns the list of bookworms,
 and their beloved books, found therein.
