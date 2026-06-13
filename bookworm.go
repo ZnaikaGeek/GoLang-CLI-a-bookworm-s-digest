@@ -36,8 +36,16 @@ type Book struct {
 }
 
 // byAuthor is a list of Book.
-// Defining a custom type to implement sort.Interface.
+// Defining a custom type to implement
+//sort.Interface.
 type byAuthor []Book
+
+/* Len implements sort.Interface 
+by returning the length of the 
+ collection. */
+func (b byAuthor) Len() int { 
+    return len(b) 
+}
 
 /*load bookWorms reads the file 
 and returns the list of bookworms,
