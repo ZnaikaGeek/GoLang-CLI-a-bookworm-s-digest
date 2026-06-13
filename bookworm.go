@@ -89,13 +89,19 @@ func (b byAuthor) Less(i, j int) bool {
 and returns the list of bookworms,
 and their beloved books, found therein.
 */
-
-// Clear error context
 func loadBookworms(filePath string) ([]Bookworm, error) {
     f, err := os.Open(filePath)
     if err != nil {
-        return nil, fmt.Errorf("failed to open bookworms file %q: %w", filePath, err)
-    }
+        return nil, &BookwormError{
+    Op:   "loadBookworms",
+    Path: filePath,
+    Err:  err,
+}
+/* Output: Same human-readable message 
+via Error()
+Bonus: Can extract Op, Path, Err 
+separately in code */
+    
     defer f.Close()
 
     var bookworms []Bookworm
